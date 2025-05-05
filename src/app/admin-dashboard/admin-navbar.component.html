@@ -1,0 +1,25 @@
+<!-- NAVBAR -->
+<nav style="background-color:  #003B46; padding: 40px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); ">
+  <!-- Title -->
+  <div style="font-weight: bold; font-size: 28px; color:white;">MY INVENTORY MANAGEMENT</div>
+
+  <!-- Navigation Links -->
+  <div style="display: flex; gap: 30px;">
+    <a routerLink="/orders" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Orders</a>
+    <a routerLink="/products" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Products</a>
+    <a routerLink="/suppliers" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Suppliers</a>
+    <a routerLink="/reports" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Reports</a>
+    <a routerLink="/stocks" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Stocks</a>
+    <a (click)="showLogoutPopup()" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500; cursor: pointer;">Logout</a>
+  </div>
+</nav>
+
+<!-- Logout Confirmation Modal -->
+<div *ngIf="showPopup" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <p>Are you sure you want to logout?</p>
+    <button (click)="logout()">Yes</button>
+    <button (click)="closePopup()">No</button>
+  </div>
+</div>
