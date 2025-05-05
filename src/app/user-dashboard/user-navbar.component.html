@@ -1,0 +1,13 @@
+<nav style="background-color: #003B46; padding: 40px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-bottom: 2px solid #ccc;">
+    <!-- Title -->
+    <div style="font-weight: bold; font-size: 28px; color: white;">MY INVENTORY MANAGEMENT</div>
+  
+    <!-- Navigation Links -->
+    <div style="display: flex; gap: 30px;">
+      <a routerLink="/place-order" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Place Order</a>
+      <a routerLink="/view-orders" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Order Details</a>
+      <a routerLink="/cancel-order" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500;">Cancel Order</a>
+      <a (click)="logout()" style="text-decoration: none; color: white; font-size: 18px; font-weight: 500; cursor: pointer;">Logout</a>
+    </div>
+</nav>
+
