@@ -1,0 +1,85 @@
+<app-user-navbar></app-user-navbar>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; background-color: #f8f9fa; font-family: 'Arial', sans-serif;">
+  <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+      <button style="border-radius: 20px; padding: 12px 24px; font-size: 1rem; cursor: pointer; margin: 0 8px; transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); border: none; background-color: #5a6268; color: white;" (click)="showOrderHistory()">Order History</button>
+      <button style="border-radius: 20px; padding: 12px 24px; font-size: 1rem; cursor: pointer; margin: 0 8px; transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); border: none; background-color: #007bff; color: white;" (click)="showOrderForm()">View My Order Details</button>
+  </div>
+
+  <div *ngIf="showOrderDetails" class="card shadow-lg mt-4" style="background-color: #fff; border-radius: 12px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); padding: 30px; width: 100%; max-width: 450px; margin-top: 2rem; animation: slideIn 0.4s ease-out; border: 1px solid #ddd;">
+      <h2 class="text-center mb-4 title" style="color: #28a745; font-size: 2.4rem; font-weight: bold; text-align: center; margin-bottom: 2.5rem; border-bottom: 2px solid #d4edda; padding-bottom: 1rem;">Order Details</h2>
+      <form (ngSubmit)="fetchOrderDetails()">
+          <div class="mb-4" style="margin-bottom: 2rem;">
+              <label for="orderId" class="form-label" style="display: block; margin-bottom: 0.7rem; font-weight: bold; color: #495057;">Order ID</label>
+              <input
+                  type="text"
+                  id="orderId"
+                  class="form-control"
+                  [(ngModel)]="orderId"
+                  name="orderId"
+                  placeholder="Enter Order ID"
+                  required
+                  style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ced4da; margin-bottom: 1.5rem; font-size: 1rem; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);"
+              />
+          </div>
+          <button type="submit" class="btn btn-submit btn-primary" style="border-radius: 20px; padding: 12px 24px; font-size: 1.1rem; width: 100%; cursor: pointer; transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; border: 1px solid #007bff; background-color: #007bff; color: white; font-weight: bold;">Fetch Order</button>
+      </form>
+
+      <div *ngIf="orderDetails" class="mt-4" style="margin-top: 2.5rem; background-color: #f8f9fa; border-radius: 8px; padding: 20px; border: 1px solid #e3e3e3;">
+          <h4 style="color: #198754; font-weight: bold; margin-bottom: 1.5rem; border-bottom: 2px solid #c3e6cb; padding-bottom: 0.8rem;"><i class="bi bi-check-circle-fill me-2"></i> Order Information</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="color: #495057; font-weight: bold;"><i class="bi bi-tag-fill me-2"></i> Order ID:</strong>
+                  <span style="color: #007bff; font-weight: 500;">{{ orderDetails.orderId }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="color: #495057; font-weight: bold;"><i class="bi bi-box-seam-fill me-2"></i> Quantity:</strong>
+                  <span style="color: #28a745; font-weight: 500;">{{ orderDetails.quantity }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="color: #495057; font-weight: bold;"><i class="bi bi-calendar-fill me-2"></i> Order Date:</strong>
+                  <span style="color: #6c757d; font-weight: 500;">{{ orderDetails.orderDate }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="color: #495057; font-weight: bold;"><i class="bi bi-truck-fill me-2"></i> Status:</strong>
+                  <span [ngClass]="{'text-success': orderDetails.status === 'Delivered', 'text-warning': orderDetails.status === 'Processing', 'text-danger': orderDetails.status === 'Cancelled'}"
+                        style="font-weight: 600;"
+                        [ngStyle]="{'color': orderDetails.status === 'Delivered' ? '#198754' : orderDetails.status === 'Processing' ? '#ffc107' : orderDetails.status === 'Cancelled' ? '#dc3545' : ''}">{{ orderDetails.status }}</span>
+              </div>
+          </div>
+      </div>
+
+      <div *ngIf="!orderDetails && formSubmitted" class="mt-4 text-danger text-center" style="margin-top: 2.5rem; text-align: center; color: #dc3545;">
+          <p style="font-size: 1.1rem; font-weight: bold;"><i class="bi bi-exclamation-triangle-fill me-2"></i> No order details found!</p>
+      </div>
+  </div>
+
+  <div *ngIf="!showOrderDetails || showHistory" class="card p-4 shadow-lg mt-4" style="background-color: #fff; border-radius: 12px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); padding: 30px; width: 100%; max-width: 450px; margin-top: 2rem; animation: slideIn 0.4s ease-out; border: 1px solid #ddd;">
+      <h4 class="text-center mb-4 text-secondary" style="color: #6c757d; font-size: 2.2rem; font-weight: bold; text-align: center; margin-bottom: 2.5rem; border-bottom: 2px solid #ced4da; padding-bottom: 1rem;"><i class="bi bi-clock-history me-2"></i> Order History</h4>
+      <ul class="list-group list-group-flush" style="list-style: none; padding-left: 0;">
+          <li *ngFor="let order of orderHistory" class="list-group-item" style="padding: 15px 0; border-bottom: 1px solid #eee;">
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="font-weight: bold; color: #495057;"><i class="bi bi-key-fill me-1"></i> ID:</strong>
+                  <span style="color: #007bff; font-weight: 500;">{{ order.orderId }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="font-weight: bold; color: #495057;"><i class="bi bi-archive-fill me-1"></i> Qty:</strong>
+                  <span style="color: #28a745; font-weight: 500;">{{ order.quantity }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="font-weight: bold; color: #495057;"><i class="bi bi-calendar-date-fill me-1"></i> Date:</strong>
+                  <span style="color: #6c757d; font-weight: 500;">{{ order.orderDate }}</span>
+              </div>
+              <div style="display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 0.5rem;">
+                  <strong style="font-weight: bold; color: #495057;"><i class="bi bi-info-circle-fill me-1"></i> Status:</strong>
+                  <span [ngClass]="{'text-success': order.status === 'Delivered', 'text-warning': order.status === 'Processing', 'text-danger': order.status === 'Cancelled'}"
+                        style="font-weight: 600;"
+                        [ngStyle]="{'color': order.status === 'Delivered' ? '#198754' : order.status === 'Processing' ? '#ffc107' : order.status === 'Cancelled' ? '#dc3545' : ''}">{{ order.status }}</span>
+              </div>
+          </li>
+      </ul>
+
+      <div *ngIf="orderHistory.length === 0" class="mt-4 text-danger text-center" style="margin-top: 2.5rem; text-align: center; color: #dc3545;">
+          <p style="font-size: 1.1rem; font-weight: bold;"><i class="bi bi-x-octagon-fill me-2"></i> No order history found.</p>
+      </div>
+  </div>
+</div>

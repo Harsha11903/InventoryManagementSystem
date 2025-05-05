@@ -1,0 +1,149 @@
+/* Enhanced General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More modern font */
+  background-color: #e9ecef; /* Softer background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+/* Enhanced Container Styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem; /* Add some padding around the container */
+  width: 100%;
+  max-width: 768px; /* Slightly wider max-width for better readability on larger screens */
+}
+
+/* Enhanced Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 12px; /* Slightly less rounded for a more contemporary feel */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* More pronounced, softer shadow */
+  padding: 48px; /* Further increase padding for spaciousness */
+  width: 100%;
+  margin-top: 2rem; /* Add top margin for better spacing from the top of the viewport */
+  animation: fadeIn 0.5s ease-out; /* Faster, smoother fade-in */
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+
+/* Enhanced Title Styling */
+.title {
+  color: #2c3e50; /* Darker, more sophisticated blue */
+  font-size: 2.5rem; /* Slightly larger title */
+  font-weight: 500; /* Medium font weight for better readability */
+  text-align: center;
+  margin-bottom: 2rem; /* Increased margin */
+  letter-spacing: -0.5px; /* Improve text rendering */
+}
+
+/* Enhanced Toggle Buttons */
+.toggle-btn {
+  border-radius: 8px; /* Less rounded for a modern look */
+  padding: 12px 24px; /* Slightly larger padding */
+  font-size: 1rem; /* Adjust font size */
+  cursor: pointer;
+  margin: 0 8px; /* Adjust margin */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  border: 1px solid transparent; /* Add transparent border for consistent sizing during hover */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Enhanced hover shadow */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3); /* Enhanced hover shadow */
+}
+
+/* Enhanced Form Styling */
+.form-label {
+  display: block; /* Ensure label takes full width */
+  margin-bottom: 0.5rem;
+  font-weight: 500; /* Slightly bolder label */
+  color: #495057; /* Darker text color */
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px; /* Increased padding */
+  border-radius: 8px; /* Less rounded */
+  border: 1px solid #ced4da;
+  margin-bottom: 1.5rem; /* Increased margin */
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Light blue border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Standard Bootstrap focus shadow */
+  outline: none;
+}
+
+/* Enhanced Submit Buttons */
+.btn-submit {
+  border-radius: 8px; /* Less rounded */
+  padding: 12px 24px; /* Increased padding */
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* More subtle shadow */
+  border: 1px solid transparent; /* Consistent sizing */
+}
+
+.btn-light-blue {
+  background-color: #add8e6;
+  border-color: #add8e6;
+  color: #212529; /* Darker text for better contrast */
+}
+
+.btn-light-blue:hover {
+  background-color: #87ceeb; /* Darker light blue on hover */
+  transform: translateY(-1px); /* Subtle lift on hover */
+  box-shadow: 0 6px 10px rgba(173, 216, 230, 0.5); /* Enhanced hover shadow */
+}
+
+/* Enhanced Text Alignment */
+.text-center {
+  text-align: center;
+}
+
+/* Enhanced Margin Utility */
+.mb-4 {
+  margin-bottom: 2rem; /* Increased margin */
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px); /* Less pronounced initial movement */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
