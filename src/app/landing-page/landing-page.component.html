@@ -1,0 +1,105 @@
+<!-- home.component.html -->
+<title>Electronics</title>
+<nav class="navbar">
+<div class="navbar-container">
+<!-- Left side: Logo and Navigation Links -->
+<div class="navbar-left">
+<a href="#" class="logo">
+<span>E</span>Lectronic<span>S</span>
+</a>
+<div class="navbar-center">
+<ul class="nav-links">
+<li><a href="#"><b style="font-style: italic; font-size: large;">Home</b></a></li>
+
+<!-- Drop-down triggers with an arrow (using &#9662;) -->
+<li><a href="#about"><b style="font-style: italic;font-size: large;">About</b></a></li>
+<li><a href="#footer"><b style="font-style: italic;font-size: large;">Contact</b></a></li>
+</ul>
+</div>
+</div>
+<!-- Right side: Login and Register Buttons -->
+<div class="navbar-right">
+<div [routerLink]="['/login']" class="auth-btn">Login</div>
+<div [routerLink]="['/register']"    class="auth-btn">Register</div>
+</div>
+</div>
+</nav>
+<!-- (Optional) Hero/Content Section -->
+<div class="hero">
+<h1 style="color: #007C91;font-size: 450%;">
+
+     <i>My Inventory</i>
+    </h1>
+     <h1 style="color: #003B46;"> 
+      Management System
+</h1>
+<br>
+<p style="font-size: large;color: #007C91;"><b>---"Where Inventory Meets Intelligence."</b></p>
+<img src="assets/images/background.png" alt="Inventory System Background" class="bg-img"/>
+</div>
+<div  class="about-section" id="about">
+      <h2><i>About Us</i></h2>
+      <p>Welcome to our website, your go-to destination for hassle-free inventory management and the finest electronic products.
+   Our platform is designed to make your shopping experience simple, efficient, and enjoyable.
+   Explore a curated selection of top-notch electronics, all in one place, with intuitive tools that streamline your search and save your time.
+   At our website, we prioritize quality, convenience, and customer satisfaction to deliver an unparalleled inventory shopping experience.</p>
+</div>
+<!-- Feature Highlights Section -->
+<div class="feature-section">
+<div class="feature-box">
+<i class="fas fa-undo"></i>
+<img src="assets/images/oreturn.jfif" alt="24/7 Support" class="feature-icon"/>
+<h3>Free Returns</h3>
+<p>Within 30 days</p>
+</div>
+<div class="feature-box">
+<i class="fas fa-shipping-fast"></i>
+<img src="assets/images/fast-delivery.png" alt="24/7 Support" class="feature-icon"/>
+<h3>Fast Delivery</h3>
+<p>World Wide</p>
+</div>
+<div class="feature-box">
+<i class="fas fa-thumbs-up"></i>
+<img src="assets/images/choice.png" alt="24/7 Support" class="feature-icon"/>
+<h3>Big Choice</h3>
+<p>Of products</p>
+</div>
+</div>
+<!-- Footer -->
+<section class="footer">
+<div class="icons-container" id="footer">
+<div class="icons">
+<i class="fas fa-map"></i>
+<img src="assets/images/add.png" alt="no address" class="support-icon"/>
+<h3 style="color: #B2EBF2;">Address</h3>
+<p>230 Point of the Pines Dr <br> Colorado Springs <br> United States</p>
+</div>
+<div class="icons">
+<i class="fas fa-phone"></i>
+<img src="assets/images/call.jpg" alt="call Support" class="support-icon"/>
+<h3 style="color: #B2EBF2;">Call</h3>
+<p>+125-847-578</p>
+</div>
+<div class="icons">
+<i class="fas fa-envelope"></i>
+<img src="assets/images/email.png" alt="email Support" class="support-icon"/>
+<h3 style="color: #B2EBF2;">Email</h3>
+<a href="mailto:inventoryhub@gmail.com" class="link">inventoryhub&#64;gmail.com</a>
+</div>
+<div class="icons">
+<img src="assets/images/service-logo.jfif" alt="24/7 Support" class="support-icon"/>
+<h3 style="color: #B2EBF2;">24/7 Service</h3>
+<p>We are here to support you anytime</p>
+</div>
+</div>
+<div class="share">
+<a href="#" class="facebook" >
+</a>
+<a href="#" class="twitter"></a>
+<a href="#" class="instagram"></a>
+</div>
+<div class="credit">
+&copy; 2025 <span>Electronic Shop</span> | <span style="color: #B2EBF2;">All rights reserved!</span> 
+</div>
+</section>
+<!-- End Footer -->
