@@ -1,0 +1,24 @@
+<div class="register-container">
+    <div class="register-left">
+      <img src="assets/images/register.png" alt="Register Image">
+    </div>
+    <div class="register-right">
+      <h1>Create Account</h1>
+      <form (ngSubmit)="onRegister()">
+        <br>
+        <input type="text" [(ngModel)]="register.firstName" name="firstName" placeholder="First Name" required>
+        <input type="text" [(ngModel)]="register.lastName" name="lastName" placeholder="Last Name" required>
+        <input type="email" [(ngModel)]="register.email" name="email" placeholder="Email (@gmail.com)" required>
+        <input type="password" [(ngModel)]="register.password" name="password" placeholder="Password" required (input)="validatePassword()">
+        <div *ngIf="passwordError" class="error-message">
+          {{ passwordError }}
+        </div>
+        <p class="login-link">
+          Already have an account?
+          <a [routerLink]="['/login']" style="color:#007b8b;">Log in</a>
+        </p>
+        <button type="submit">REGISTER</button>
+      </form>
+    </div>
+  </div>
+  
