@@ -1,0 +1,34 @@
+<div *ngIf="isLoggedIn">
+    <app-admin-navbar></app-admin-navbar>
+    <div *ngIf="filteredReports.length > 0">
+      <div class="grid-container">
+        <div *ngFor="let report of filteredReports" class="report-card" (click)="selectReport(report)">
+          <p>Report ID: {{ report.reportId }}</p>
+          <p><strong>Type:</strong> {{ report.reportType }}</p>
+          <p><strong>Start Date:</strong> {{ report.startDate | date }}</p>
+          <p><strong>End Date:</strong> {{ report.endDate | date }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="filteredReports.length === 0">
+      <p>No reports found for the selected type.</p>
+    </div>
+  
+    <!-- Popup for selected report -->
+    <div *ngIf="selectedReport" class="popup-card">
+      <img src="assets/Report.jfif" style="width: 50px; height: 50px;">
+      <p><strong>Report Id:</strong> {{ selectedReport.reportId }}</p>
+      <p><strong>Type:</strong> {{ selectedReport.reportType }}</p>
+      <p><strong>Start Date:</strong> {{ selectedReport.startDate | date }}</p>
+      <p><strong>End Date:</strong> {{ selectedReport.endDate | date }}</p>
+      <p><strong>Data:</strong> {{ selectedReport.data }}</p>
+      <div class="popup-buttons">
+        <button class="delete-button" (click)="deleteReport(selectedReport)">Delete</button>
+        <button class="close-button" (click)="closePopup()">Close</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isLoggedIn">
+    <app-logged-out></app-logged-out>
+  </div>
+  
