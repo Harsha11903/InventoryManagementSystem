@@ -1,0 +1,57 @@
+<div *ngIf="isLoggedIn">
+  <app-admin-navbar></app-admin-navbar>
+  <div class="container">
+    <div *ngIf="!showForm" class="cards-container">
+      <div class="card inventory" (click)="navigateToReport('Inventory')">
+        <h3>Inventory</h3>
+        <p>Details about inventory reports.</p>
+      </div>
+      <div class="card supplier" (click)="navigateToReport('Supplier')">
+        <h3>Supplier</h3>
+        <p>Details about supplier reports.</p>
+      </div>
+      <div class="card product" (click)="navigateToReport('Product')">
+        <h3>Product</h3>
+        <p>Details about product reports.</p>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <a *ngIf="!showForm" (click)="showCreateForm()" class="create-link">Want to create a new Report?</a>
+    </div>
+
+    <div *ngIf="showForm" class="form-container">
+      <h2>Create New Report</h2>
+      <form (submit)="createReport()">
+        <div class="form-group">
+          <label for="reportType">Report Type:</label>
+          <select id="reportType" [(ngModel)]="newReport.reportType" name="reportType" required style="width:620px;height:30px;">
+            <option value="Inventory">Inventory</option>
+            <option value="Supplier">Supplier</option>
+            <option value="Product">Product</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" [(ngModel)]="newReport.startDate" name="startDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" [(ngModel)]="newReport.endDate" name="endDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="data">Data:</label>
+          <textarea id="data" [(ngModel)]="newReport.data" name="data" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Create Report</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isLoggedIn">
+  <app-logged-out></app-logged-out>
+</div>
