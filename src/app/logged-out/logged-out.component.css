@@ -1,0 +1,67 @@
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:#003B46;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    padding: 20px;
+  }
+  
+  .logout-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 40px 30px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    animation: fadeSlideIn 0.7s ease forwards;
+  }
+  
+  .logout-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #003B46;
+    margin-bottom: 16px;
+  }
+  
+  .logout-message {
+    font-size: 16px;
+    color: #003B46;
+    margin-bottom: 30px;
+  }
+  
+  .logout-button {
+    background-color: #003B46;
+    color: #fff;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .logout-button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    transform: translateY(-2px);
+  }
+  
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
