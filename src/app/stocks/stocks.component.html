@@ -1,0 +1,60 @@
+<div *ngIf="isLoggedIn">
+<app-admin-navbar></app-admin-navbar>
+<div class="container">
+    <div class="filters">
+      <select id="filter-select" [(ngModel)]="selectedFilter" (change)="onFilterChange()" class="filter-select">
+        <option value="">All</option>
+        <option value="id">ID</option>
+        <option value="reorderLevel">Reorder Level</option>
+        <option value="quantity">Quantity</option>
+      </select>
+      <div *ngIf="selectedFilter === 'id'" class="filter-input-container">
+        <input type="number" [(ngModel)]="filterValue" placeholder="Enter ID" (input)="filterStocks()" class="filter-input" />
+      </div>
+      <div *ngIf="selectedFilter === 'reorderLevel'" class="filter-input-container">
+        <input type="text" [(ngModel)]="filterValue" placeholder="Enter Reorder Level" (input)="filterStocks()" class="filter-input" />
+      </div>
+      <div *ngIf="selectedFilter === 'quantity'" class="filter-input-container">
+        <input type="number" [(ngModel)]="filterValue" placeholder="Enter Quantity" (input)="filterStocks()" class="filter-input" />
+      </div>
+    </div>
+    <div class="stock-list">
+      <div *ngFor="let stock of filteredStocks" class="stock-card">
+        <div class="card-content">
+          <p class="card-detail">Product ID: {{ stock.productId }}</p>
+          <button (click)="selectStock(stock.productId); $event.stopPropagation()" class="details-button">Product Details</button>
+          <p class="card-detail">Reorder Level: {{ stock.reorderLevel }}</p>
+          <p class="card-detail">Quantity: {{ stock.quantity }}</p>
+          <input type="number" [(ngModel)]="stock.newQuantity" placeholder="Enter new quantity" class="quantity-input" (click)="$event.stopPropagation()">
+          <button (click)="updateStockQuantity(stock.productId, stock.newQuantity); $event.stopPropagation()" class="update-button">Update Quantity</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedProduct" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closePopup()">&times;</span>
+        <div class="product-details">
+          <div class="product-header">
+            <img src="assets/Product.jfif" alt="Product Icon" class="product-image">
+            <h2 class="product-title" style="color:black">{{selectedProduct.name}}</h2>
+          </div>
+          <div class="detail-item">
+            <strong>ID:</strong> {{ selectedProduct.productId }}
+          </div>
+          <div class="detail-item">
+            <strong>Description:</strong> {{ selectedProduct.desc }}
+          </div>
+          <div class="detail-item">
+            <strong>Price:</strong> {{ selectedProduct.price | currency }}
+          </div>
+          <div class="detail-item">
+            <strong>Stock Level:</strong> {{ selectedProduct.stockLevel }}
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+<div *ngIf="isLoggedIn===false">
+  <app-logged-out></app-logged-out>
+</div>
