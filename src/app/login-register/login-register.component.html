@@ -1,0 +1,21 @@
+<div class="login-container">
+    <div class="login-left">
+    <img src="assets/images/login.png" alt="Login Image">
+    </div>
+    <div class="login-right">
+    <h1>Login</h1>
+    <form (submit)="onLogin()">
+   
+    <br>
+    <input type="email"  [(ngModel)]="login.loginUsername" placeholder="User Name (@gmail.com)" name="Username" required>
+    <input type="password" [(ngModel)]="login.loginPassword" placeholder="Password" name ="Password"required>
+    <p class="register-link">
+       Don’t have an account?
+    <a [routerLink]="['/register']" style="color:#007b8b;">Create one</a>
+    </p>
+    
+    <button type="submit">LOGIN</button>
+    </form>
+    </div>
+    </div> 
+    
