@@ -1,0 +1,49 @@
+<div *ngIf="!isLoggedIn">
+  <app-logged-out></app-logged-out>
+</div>
+<div *ngIf="isLoggedIn">
+  <app-admin-navbar></app-admin-navbar>
+  <div class="container my-4">
+    <div class="row">
+      <!-- Order Card -->
+      <div class="col" *ngFor="let order of orders">
+        <div class="card order-card shadow-sm">
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Order ID:</strong> {{ order.orderId }}
+              <img src="assets/Order.jfif" class="order-icon" alt="Order Icon">
+            </p>
+            <p class="card-text"><strong>Customer ID:</strong> {{ order.customer.id }}</p>
+            <p class="card-text"><strong>Quantity:</strong> {{ order.quantity }}</p>
+            <p class="card-text"><strong>Order Date:</strong> {{ order.orderDate }}</p>
+            <p class="card-text">
+              <strong>Status:</strong>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'badge-pending': order.status === 'pending',
+                  'badge-delivered': order.status !== 'pending'
+                }"
+              >
+                {{ order.status }}
+              </span>
+            </p>
+          </div>
+
+          <!-- Admin Controls -->
+          <div class="card-footer bg-light" *ngIf="isAdmin && order.status === 'pending'">
+            <div class="d-flex align-items-center gap-2">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="order.newStatus"
+                placeholder="Enter new status"
+              />
+              <button class="btn btn-primary" (click)="updateOrderStatus(order.orderId, order.newStatus)">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

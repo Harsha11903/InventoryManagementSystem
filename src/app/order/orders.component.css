@@ -1,0 +1,97 @@
+/* General Styling */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Grid Layout */
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Order Card Styling */
+  .order-card {
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    padding: 15px;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Card Text */
+  .card-text {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 8px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Order Icon */
+  /* Order Icon */
+/* Order Icon */
+.order-icon {
+    width: 30px; /* Set the width for a smaller icon */
+    height: 30px; /* Set the height for a smaller icon */
+    margin-left: auto; /* Push the icon to the right */
+    vertical-align: middle; /* Align the icon with the text */
+    display: inline-block; /* Ensure the icon stays inline with the text */
+  }
+  
+  /* Badge Styling */
+  .badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #fff;
+  }
+  
+  .badge-pending {
+    background-color: rgb(159, 203, 222);
+  }
+  
+  .badge-delivered {
+    background-color: #28a745;
+  }
+  
+  /* Admin Controls */
+  .card-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .btn {
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #74b3f6;
+    transform: scale(1.05);
+  }
